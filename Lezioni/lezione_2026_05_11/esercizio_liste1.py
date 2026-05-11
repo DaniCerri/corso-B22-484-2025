@@ -29,6 +29,21 @@ lista[3] = int(float(lista[3]))
 lista[-2] = int(lista[-2])
 lista[-3] = int(lista[-3])
 
-# TODO: stampare la lista
-# TODO: stampare la lista invertita
+lista_prov = lista.pop(4)  # Togliamo l'elemento ad indice 4 e lo mettiamo nella variabile
+lista_prov[-1] = int(lista_prov[-1])
+lista.insert(4, lista_prov[0])
+lista.insert(5, lista_prov[1])
+lista.insert(6, lista_prov[2])
 
+lista_prov = lista.pop()
+lista_prov[1] = int(float(lista_prov[1]))
+lista_prov[2] = int(lista_prov[2])
+lista.append(lista_prov[0])
+lista.append(lista_prov[1])
+lista.append(lista_prov[2])
+# lista.extend(lista_prov) per mettere la lista_prov alla fine
+
+# TODO: stampare la lista
+print(lista)
+# TODO: stampare la lista invertita
+print(lista[::-1])
