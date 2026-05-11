@@ -39,8 +39,15 @@ da_pagare_irpef = fatturato * coeff_redditivita * coeff_irpef
 
 fatt_media = fatturato / n_fatture
 
-# netto = fatturato - (da_pagare_inps + da_pagare_irpef)
+netto = fatturato - (da_pagare_inps + da_pagare_irpef)
 # perc_netto = netto / fatturato
 
 # perc_netto = 1 - coeff_redditivita * coeff_irpef + coeff_redditivita * coeff_inps
 perc_netto = 1 - (coeff_redditivita * (coeff_irpef + coeff_inps))
+
+# ============ OUTPUT ============
+print(f"Incasso netto: {netto:.2f} €")
+print(f"Da pagara per l'INPS: {da_pagare_inps:.2f} €")
+print(f"Da pagara per l'IRPEF: {da_pagare_irpef:.2f} €")
+print(f"Fattura media: {fatt_media:.2f} €")
+print(f"Percentuale di netto sul lordo: {perc_netto:.2%}")
