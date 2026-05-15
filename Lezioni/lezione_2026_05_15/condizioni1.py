@@ -14,3 +14,6 @@ ore_di_lezione = 2
 
 print(not orario > 16 and not ore_di_lezione >= 1)
 print(not(orario > 16 or ore_di_lezione >= 1))
+
+print(orario == ore_di_lezione)
+print(orario != ore_di_lezione)
