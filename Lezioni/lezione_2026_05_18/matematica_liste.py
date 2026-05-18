@@ -34,7 +34,19 @@ for i in range(1, len(lista)):
     if lista[argmax] < lista[i]:
         argmax = i
 
+# Conteggio di un elemento all'interno della lista
+# Contiamo quante volte appare il numero 29
+conteggio = 0
+for numero in lista:
+    if numero == 29:
+        conteggio += 1
 
+print(f"Numero di 29: {conteggio}")
 
+# Calcoliamo la massima differenza tra due elementi della lista
+max_differenza = max(lista) - min(lista)
+# Facciamo attenzione a non sovrascrivere funzioni o keyword che python
+# ci mette a disposizione
 
-
+# max = max(lista)
+# list = [1, 2, 3, ]
