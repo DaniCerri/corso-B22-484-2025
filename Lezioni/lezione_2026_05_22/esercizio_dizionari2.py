@@ -55,4 +55,13 @@ while True:
         print("Non c'è abbastanza gelato, seleziona una quantità minore")
 
     # 3. Togliamo dalla quantità del gusto quella comprata
+    dizionario_gusti[gusto_scelto]['quantita'] -= quantita
 
+    # 4. Stampiamo al cliente quanto deve pagare
+    prezzo = quantita * dizionario_gusti[gusto_scelto]['prezzo']
+    print(f"Prezzo da pagare: {prezzo:.2f} €")
+
+    print()
+    print()
+
+# TODO: Facciamo in modo che se di un gusto la quantità è 0, non lo stampi nel menu
