@@ -29,17 +29,30 @@ dizionario_gusti = {
 }
 
 while True:
+    # Usiamo il for SOLAMENTE per stampare il menu
     for chiave, valore in dizionario_gusti.items():
         print(f"{chiave}")
         print(f"  Prezzo del gusto {chiave}: {valore['prezzo']:.2f} €/kg")
         print(f"  Quantità del gusto {chiave}: {valore['quantita']:.2f} kg")
         print("-" * 60)
 
+        # Tornando a sinistra, il for si è concluso
     gusto_scelto = input("Inserisci quale gusto vuoi: ")
 
     # 1. controlliamo se il gusto inserito è presente
     # passiamo direttamente al prossimo ciclo con la keyword "continue"
-    if "il gusto non c'è":
+    if gusto_scelto not in dizionario_gusti.keys():
+        print("Non hai selezionato un gusto tra quelli presenti")
         continue
 
+    # Se abbiamo fatto il continue questo blocco per il giro corrente verrà saltato
+    # 2. Per il gusto selezionato facciamo inserire la quantità
+    while True:
+        quantita = float(input(f"Inserisci la quantità di {gusto_scelto} "
+                               f"(0 - {dizionario_gusti[gusto_scelto]['quantita']} kg): "))
+        if 0 < quantita <= dizionario_gusti[gusto_scelto]['quantita']:
+            break
+        print("Non c'è abbastanza gelato, seleziona una quantità minore")
+
+    # 3. Togliamo dalla quantità del gusto quella comprata
 
