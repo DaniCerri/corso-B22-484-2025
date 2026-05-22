@@ -26,7 +26,7 @@ for carattere in stringa.lower():
     # if carattere not in dizionario_caratteri.keys():
     #     conteggio = 0 + 1
     # else:
-    #     conteggio = dizionario_caratteri[carattere] + 1
+    #     conteggio = dizionario_caratteri[carattere] + 1z
 
     # con la riga sotto creiamo la coppia carattere conteggio se non c'era, altrimenti la aggiorniamo
     dizionario_caratteri[carattere] = conteggio
