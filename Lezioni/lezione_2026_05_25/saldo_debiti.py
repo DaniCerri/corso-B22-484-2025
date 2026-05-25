@@ -31,4 +31,11 @@ dizionario_vacanza = {
     }
 }
 # Primo obiettivo: Avere un dizionario con saldo di ciascuno (somma di debiti e crediti per ciascuno)
-# Secondo obiettivo: Utilizzare il dizionario ottenuto nel primo punto per calcolare le transizioni
+dizionario_saldi = {}
+for persona, situazione in dizionario_vacanza.items():
+    saldo = sum(situazione.values())
+    dizionario_saldi[persona] = round(saldo, 2)  # Arrotonda il saldo a 2 cifre decimali
+
+print(dizionario_saldi)
+# dizionario_saldi = {persona: sum(situazione.values()) for persona, situazione in dizionario_vacanza.items()}
+# Secondo obiettivo: Utilizzare il dizionario ottenuto nel primo punto per calcolare le transazioni
