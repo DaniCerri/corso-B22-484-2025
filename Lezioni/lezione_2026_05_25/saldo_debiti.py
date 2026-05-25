@@ -39,3 +39,31 @@ for persona, situazione in dizionario_vacanza.items():
 print(dizionario_saldi)
 # dizionario_saldi = {persona: sum(situazione.values()) for persona, situazione in dizionario_vacanza.items()}
 # Secondo obiettivo: Utilizzare il dizionario ottenuto nel primo punto per calcolare le transazioni
+# IDEA: prendiamo volta per volta la persona con debito maggiore e credito maggiore e le accoppiamo per il saldo
+#       procediamo finché il saldo di tutti è a 0
+
+while True:
+    peggior_debitore = min(dizionario_saldi, key=dizionario_saldi.get)
+    # Questa riga cerca la chiave che dà come risultato di dizionario_saldi.get(chiave) il numero più piccolo
+    # è come se l'elenco di coppie chiave-valore del dizionario venisse ordinate in senso crescente in base ai valori
+    # e poi si prende il primo elemento
+    # [
+    #     ("Daniele", -32),
+    #     ("Luca", 23),
+    #     ...
+    # ]
+    miglior_creditore = max(dizionario_saldi, key=dizionario_saldi.get)
+
+    # Controllo per uscire => Quando abbiamo saldato tutti, quanto vale il credito del migliore creditore?
+    if abs(dizionario_saldi[peggior_debitore]) < 0.01 or abs(dizionario_saldi[miglior_creditore]) < 0.01:
+        # se quelli che hanno peggior debito o miglior credito sono praticamente nulli, vuol dire che abbiamo finito
+        # usciamo dal while
+        break
+
+    # Calcolare l'importo da trasferire
+
+    # Stampare la transazione
+
+    # Aggiornare il dizionario
+
+
