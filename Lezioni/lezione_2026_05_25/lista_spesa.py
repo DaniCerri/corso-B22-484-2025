@@ -29,7 +29,50 @@ lista_spesa = [
 ]
 
 # budget = float(input("Inserisci il tuo budget: "))  # €
-budget = 10.2 # €
+budget = 5.0 # €
+
+totale = 0
+
+for elemento in lista_spesa:
+    articolo = elemento['articolo']
+    quantita = elemento['quantita']
+
+    # versione 1
+    # Cerchiamo di prendere il prezzo dell'articolo
+    # se l'articolo non è presente nel dizionario listino_prezzi, allora
+    # lo impostiamo a None così da poter controllare subito dopo
+    # prezzo_unitario = listino_prezzi.get(articolo, None)
+    #
+    # # Se il prezzo è None, vuol dire che l'articolo non è presente
+    # if not prezzo_unitario:
+    #     # stampiamo l'errore
+    #     print(f"Articolo: {articolo} non presente nel listino")
+    #     # passiamo al prossimo elemento nella lista
+    #     continue
+
+    # versione 2
+    # prima controlli che l'articolo che vuoi comprare sia nelle chiavi, altrimenti passi al
+    # prossimo articolo
+    if articolo not in listino_prezzi.keys():
+        # stampiamo l'errore
+        print(f"Articolo: {articolo} non presente nel listino")
+        # passiamo al prossimo elemento nella lista
+        continue
+
+    # Se arriviamo qua, siamo certi che l'articolo sia nel listino prezzi, altrimenti
+    # avremmo fatto il continue subito prima e saremmo passati all'articolo successivo
+    prezzo_unitario = listino_prezzi[articolo]
+
+    # Se arriviamo qua sotto, vuol dire che non siamo entrati nell'if, quindi abbiamo il prezzo
+    costo_totale = prezzo_unitario * quantita
+
+    # Controlliamo di poterci permettere di comprare l'articolo
+    if costo_totale + totale <= budget:
+        totale += costo_totale
+        print(f"  - {articolo} * {quantita} aggiunto: {costo_totale:.2f} €")
+
+print(f"Costo spesa totale: {totale:.2f} €")
+
 
 # TODO: BONUS si può fare anche una versione che se c'è poco budget
 #  prenda meno elementi dell'ultimo articolo
