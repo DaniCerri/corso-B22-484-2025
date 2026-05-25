@@ -61,9 +61,16 @@ while True:
         break
 
     # Calcolare l'importo da trasferire
+    importo_debito = dizionario_saldi[peggior_debitore]
+    importo_credito = dizionario_saldi[miglior_creditore]
+
+    importo_saldo = min(abs(importo_debito), importo_credito)
 
     # Stampare la transazione
+    print(f"{peggior_debitore} -> {miglior_creditore}: {importo_saldo:.2f}")
 
     # Aggiornare il dizionario
+    dizionario_saldi[peggior_debitore] = round(importo_debito + importo_saldo, 2)
+    dizionario_saldi[miglior_creditore] = round(importo_credito - importo_saldo, 2)
 
-
+print(dizionario_saldi)
