@@ -30,5 +30,5 @@ dizionario_vacanza = {
         "Giulia": -12.00
     }
 }
-
-
+# Primo obiettivo: Avere un dizionario con saldo di ciascuno (somma di debiti e crediti per ciascuno)
+# Secondo obiettivo: Utilizzare il dizionario ottenuto nel primo punto per calcolare le transizioni
