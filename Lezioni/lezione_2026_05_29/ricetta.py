@@ -19,8 +19,19 @@ def adatta_ricetta(ricetta_a_persona, n_persone):
         quantita *= n_persone
         if ingrediente == "pecorino":
             quantita = min(quantita, 200)
-        ricetta_a_persona[ingrediente] = quantita * n_persone
+        ricetta_a_persona[ingrediente] = quantita
 
+    return ricetta_a_persona
+
+def controlla_dispensa(ricetta, dispensa):
+    lista_spesa = {}
+    for ingrediente, quantita in ricetta.items():
+        quantita_a_disposizione = dispensa.get(ingrediente, 0)
+        da_comprare = quantita - quantita_a_disposizione
+        if da_comprare > 0:
+            lista_spesa[ingrediente] = da_comprare
+
+    return lista_spesa
 
 # Ricetta per persona
 ricetta = {
@@ -34,7 +45,12 @@ dispensa = {
     "pasta": 450, # g
     "guanciale": 100, #g
     "tuorlo": 7, # pz
-    "pecorino": 0 # g
 }
 
-n = 10
+n = 2  # Numero di persone
+
+ricetta_adattata = adatta_ricetta(ricetta, n)
+lista = controlla_dispensa(ricetta_adattata, dispensa)
+
+print(ricetta_adattata)
+print(lista)
