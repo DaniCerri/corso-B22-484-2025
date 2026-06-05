@@ -34,3 +34,16 @@ def media_geometrica(lista_numeri: list[int | float])->float:
     for elemento in lista_numeri:
         prodotto *= elemento
     return prodotto ** (1 / len(lista_numeri))
+
+def aggrega(matrice_numeri: list[list[int | float]]) -> list[int | float]:
+    return [sum(riga) for riga in matrice_numeri]
+
+
+
+
+
+
+
+
+
+
