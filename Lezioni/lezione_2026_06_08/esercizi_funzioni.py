@@ -1,6 +1,6 @@
 """
 Facciamo una funzione aabb
-che presa una lista di numeri per ognuno
+che presa una lista di numeri interi per ognuno
  * se è multiplo di 3 stampa "aa"
  * se è multiplo di 5 stampa "bb"
  * se è multiplo di 15 stampa "aabb"
