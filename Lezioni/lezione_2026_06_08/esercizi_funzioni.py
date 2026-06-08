@@ -23,7 +23,7 @@ def aabb(lista_numeri: list[int]) -> None:
             da_stampare += "bb"
         print(da_stampare)
 
-aabb([1, 3, 5, 15, 20, 25, 12, 17])
+# aabb([1, 3, 5, 15, 20, 25, 12, 17])
 """
 Facciamo una funzione che data una lista ordinata (crescente) di numeri e 
 un target stampa True se esistono due numeri nella lista che sommati
@@ -44,13 +44,13 @@ def find_target(lista_numeri: list[int | float], target: int | float) -> None:
             right -= 1
 
     print(f"target: {target}, left: {left}, right: {right}, trovato: {trovato}")
-print([2, 4, 5, 7, 8, 11, 12])
-find_target([2, 4, 5, 7, 8, 11, 12], 12)
-find_target([2, 4, 5, 7, 8, 11, 12], 6)
-find_target([2, 4, 5, 7, 8, 11, 12], 13)
-find_target([2, 4, 5, 7, 8, 11, 12], 8)
-find_target([2, 4, 5, 7, 8, 11, 12], 3)
-find_target([2, 4, 5, 7, 8, 11, 12], 45)
+# print([2, 4, 5, 7, 8, 11, 12])
+# find_target([2, 4, 5, 7, 8, 11, 12], 12)
+# find_target([2, 4, 5, 7, 8, 11, 12], 6)
+# find_target([2, 4, 5, 7, 8, 11, 12], 13)
+# find_target([2, 4, 5, 7, 8, 11, 12], 8)
+# find_target([2, 4, 5, 7, 8, 11, 12], 3)
+# find_target([2, 4, 5, 7, 8, 11, 12], 45)
 
 
 """
@@ -61,5 +61,18 @@ numero_0 = 0
 numero_1 = 1
 numero_n = numero_(n-1) + numero_(n-2)
 """
+def fibonacci(n: int) -> int:
+    if n <= 2:
+        return n - 1
+    n_2 = 0
+    n_1 = 1
+    for i in range(2, n):
+        corrente = n_1 + n_2
+        n_2 = n_1
+        n_1 = corrente
 
+    return corrente / n_2
+
+for i in range(2, 20):
+    print(f"Numero di fibonacci pos {i} = {fibonacci(i)}")
 
