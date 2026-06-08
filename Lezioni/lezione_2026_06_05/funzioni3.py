@@ -39,7 +39,9 @@ def aggrega(matrice_numeri: list[list[int | float]]) -> list[int | float]:
     return [sum(riga) for riga in matrice_numeri]
 
 
-
+if __name__ == "__main__":
+    print(funzioni2.calcola_media([11, 12, ]))
+    print(deviazione_standard([11, 12, 10, 12, 13, 11, 12]))
 
 
 
