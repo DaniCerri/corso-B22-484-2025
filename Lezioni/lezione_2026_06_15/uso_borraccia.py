@@ -32,12 +32,23 @@ while True:
         break
     elif scelta == 1:
         volume_da_inserire = input_numero(
-        0,
-               borraccia1.volume,
-     "Inserisci il volume da aggiungere: "
+            0,
+            borraccia1.volume,
+            "Inserisci il volume da aggiungere: "
         )
         v_libero = borraccia1.riempi_borraccia(volume_da_inserire)
         if v_libero == -1:
             print("La borraccia era già piena")
         else:
             print(f"Volume libero rimasto: {v_libero:.2f}")
+    elif scelta == 2:
+        volume_da_togliere = input_numero(
+            0,
+            borraccia1.volume,
+            "Inserisci il volume da togliere: "
+        )
+        volume_occupato = borraccia1.svuota_borraccia(volume_da_togliere)
+        if volume_occupato == -1:
+            print("La borraccia è già vuota")
+        else:
+            print(f"Rimangono {volume_occupato:.2f}L nella borraccia")
