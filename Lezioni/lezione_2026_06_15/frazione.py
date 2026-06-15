@@ -33,7 +33,37 @@ class Frazione:
         # 4. se c'è almeno un nan dà nan
         # 5. se non c'è una regola di sopra che si applica,
         #    basta fare la somma classica
+        print("self", self.numeratore, self.denominatore)
+        print("other", other.numeratore, other.denominatore)
+        if self.valuta() == "nan" or other.valuta() == "nan":
+            return "nan"
 
+        valutazione_self = str(self.valuta())
+        valutazione_other = str(other.valuta())
+
+        minore = min(valutazione_self, valutazione_other)
+        maggiore = max(valutazione_self, valutazione_other)
+
+        if minore == "+ inf" and maggiore == "- inf":
+            return "nan"
+        elif minore == maggiore and "inf" in minore:
+            return minore
+        elif "inf" in minore:
+            return minore
+
+        numeratore = (self.numeratore * other.denominatore
+                      + self.denominatore * other.numeratore)
+        denominatore = self.denominatore * other.denominatore
+        return Frazione(numeratore, denominatore)
+
+if __name__ == "__main__":
+    fraz1 = Frazione(5, 0)
+    fraz2 = Frazione(7, 3)
+    fraz3 = Frazione(4, 5)
+    print(fraz1.valuta())
+    print(fraz2.valuta())
+    print(fraz3.valuta())
+    print(fraz1 + fraz2)
 
 
 
