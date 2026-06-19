@@ -30,6 +30,17 @@ def min_max_fattura(lista_fatture: list[dict]) -> tuple[dict, dict]:
 
     return lista_fatture[indice_min], lista_fatture[indice_max]
 
+# TODO: rendere più generica per un numero qualsiasi di tipologie
+def conta_tipolgie(lista_fatture: list[dict]) -> tuple[int, int]:
+    n_progetti = 0
+    n_consulenze = 0
+    for fattura in lista_fatture:
+        if fattura['tipologia'] == "progetto":
+            n_progetti += 1
+        else:
+            n_consulenze += 1
+
+    return n_progetti, n_consulenze
 
 # lista fatture
 lista_fatture = [
