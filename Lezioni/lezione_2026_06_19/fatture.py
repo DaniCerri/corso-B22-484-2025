@@ -42,13 +42,24 @@ def conta_tipolgie(lista_fatture: list[dict]) -> tuple[int, int]:
 
     return n_progetti, n_consulenze
 
-def fatturato_totale(lista_fatture: list[dict]) -> float:
+def fatturato_totale(lista_fatture: list[dict], incassate: bool) -> float:
+    """
+    Funzione che calcola il fatturato totale, opzionalmente solo delle fatture incassate
+    :param lista_fatture: lista di dizionari "fattura"
+    :param incassate: True -> conta solo le fatture da incassare, False -> conta tutte le fatture
+    :return: somma degli importi delle fatture considerate
+    """
     tot = 0
     for fattura in lista_fatture:
-        tot += fattura['importo']
+        # L'idea è mettere in relazione con uno o più operatori logici il valore di "incassata"
+        # del dizionario fattura corrente e il parametro "incassate" passato alla funzione in modo che
+        # l'espressione risultate sia sempre vera se incassate è False e vera solamente se fattura['incassata'] è
+        # True quando incassate è True
+        if fattura['incassata'] or not incassate:
+            tot += fattura['importo']
 
     return tot
-    # return sum(fattura['importo'] for fattura in lista_fatture)
+    # return sum(fattura['importo'] for fattura in lista_fatture if fattura['incassata'] or not incassate)
 
 def media_fatture(lista_fatture: list[dict]) -> float:
     totale = fatturato_totale(lista_fatture)
@@ -56,8 +67,9 @@ def media_fatture(lista_fatture: list[dict]) -> float:
 
 """
 Utilizzando le funzioni già fatte dove possibile facciamo 3 nuove funzioi
-1. calcola quanto ancora dobbiamo incassare in totale
-2. calcola dato il fatturato totale, coef inps, coef irpef quanto bisogna pagare di tasse
+1. calcola quanto ancora dobbiamo incassare in totale -> vedi funzione fatturato_totale
+2. calcola dato il fatturato totale, coef inps, coef irpef, coef di redditività quanto bisogna pagare di tasse (totale)
+   suggerimenti: usiamo la funzione appena modificata, a quel punto basta applicare la regole dei coeff percentuali
 3. sapendo che le tasse sono basate sul fatturato e non sull'incassato, facciamo una funzione che ci
    dice se abbiamo incassato abbastanza per pagare le tasse o se siamo sotto:
        o stampate il debito/credito che avanza dal pagamento 
