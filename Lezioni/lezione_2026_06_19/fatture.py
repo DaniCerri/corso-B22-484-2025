@@ -14,7 +14,7 @@ L'obiettivo è data una lista di fatture calcolare:
 * Fattura più proficua (importo maggiore)
 * Fattura meno proficua (importo minore)
 * Numero di fatture per progetti e numero di fatture per consulenze
-* Fatturato totale e fatturato medie
+* Fatturato totale e fatturato medio
 """
 # definiamo le funzioni
 def min_max_fattura(lista_fatture: list[dict]) -> tuple[dict, dict]:
@@ -41,6 +41,28 @@ def conta_tipolgie(lista_fatture: list[dict]) -> tuple[int, int]:
             n_consulenze += 1
 
     return n_progetti, n_consulenze
+
+def fatturato_totale(lista_fatture: list[dict]) -> float:
+    tot = 0
+    for fattura in lista_fatture:
+        tot += fattura['importo']
+
+    return tot
+    # return sum(fattura['importo'] for fattura in lista_fatture)
+
+def media_fatture(lista_fatture: list[dict]) -> float:
+    totale = fatturato_totale(lista_fatture)
+    return totale / len(lista_fatture)
+
+"""
+Utilizzando le funzioni già fatte dove possibile facciamo 3 nuove funzioi
+1. calcola quanto ancora dobbiamo incassare in totale
+2. calcola dato il fatturato totale, coef inps, coef irpef quanto bisogna pagare di tasse
+3. sapendo che le tasse sono basate sul fatturato e non sull'incassato, facciamo una funzione che ci
+   dice se abbiamo incassato abbastanza per pagare le tasse o se siamo sotto:
+       o stampate il debito/credito che avanza dal pagamento 
+       o stampare True se siamo in negativo, False altrimenti -> ci sono 3 casi possibili
+"""
 
 # lista fatture
 lista_fatture = [
