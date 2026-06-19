@@ -17,5 +17,5 @@ Video su Youtube:
 [link](https://www.youtube.com/watch?v=J3M4ZAVD9y8&list=PLHUQL6-_n9Zes1VLMgJbLa8IIOHT9x4Nu)
 ## Contatti
 
-Per domande o chiarimenti: [daniecerri@gmail.com](mailto:daniecerri@gmail.com)
+Per domande o chiarimenti: [daniecerri@gmail.com](mailto:daniecerri@gmail.com)\
 Mail Immaginazione e lavoro: [daniele.cerrina@immaginazioneelavoro.it](mailto:daniele.cerrina@immaginazioneelavoro.it)
