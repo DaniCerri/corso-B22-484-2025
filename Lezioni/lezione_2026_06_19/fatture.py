@@ -75,6 +75,17 @@ Utilizzando le funzioni già fatte dove possibile facciamo 3 nuove funzioi
        o stampate il debito/credito che avanza dal pagamento 
        o stampare True se siamo in negativo, False altrimenti -> ci sono 3 casi possibili
 """
+# calcolo tasse
+def calcolo_tasse(lista_fatture: list[dict], coef_inps: float, coef_irpef: float, coef_redd: float) -> float:
+    fatturato = fatturato_totale(lista_fatture, False)
+    # inps = fatturato * coef_redd * coef_inps
+    # irpef = fatturato * coef_redd * coef_irpef
+    #
+    # totale_tasse = inps + irpef
+    # return totale_tasse
+
+    return fatturato * coef_redd * (coef_inps + coef_irpef)
+
 
 # lista fatture
 lista_fatture = [

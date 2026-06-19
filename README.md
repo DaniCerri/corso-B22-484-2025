@@ -18,3 +18,4 @@ Video su Youtube:
 ## Contatti
 
 Per domande o chiarimenti: [daniecerri@gmail.com](mailto:daniecerri@gmail.com)
+Mail Immaginazione e lavoro: [daniele.cerrina@immaginazioneelavoro.it](mailto:daniele.cerrina@immaginazioneelavoro.it)
