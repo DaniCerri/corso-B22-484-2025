@@ -11,8 +11,8 @@ Abbiamo una lista di dizionari "fattura2" composti così:
 ]
 
 L'obiettivo è data una lista di fatture calcolare:
-* Fattura più proficua
-* Fattura meno proficua
+* Fattura più proficua (importo maggiore)
+* Fattura meno proficua (importo minore)
 * Numero di fatture per progetti e numero di fatture per consulenze
 * Fatturato totale e fatturato medie
 """
