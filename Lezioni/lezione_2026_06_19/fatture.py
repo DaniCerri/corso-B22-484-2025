@@ -17,6 +17,18 @@ L'obiettivo è data una lista di fatture calcolare:
 * Fatturato totale e fatturato medie
 """
 # definiamo le funzioni
+def min_max_fattura(lista_fatture: list[dict]) -> tuple[dict, dict]:
+    indice_min = 0
+    indice_max = 0
+
+    for i in range(len(lista_fatture)):
+        if lista_fatture[i]['importo'] > lista_fatture[indice_max]['importo']:
+            indice_max = i
+
+        if lista_fatture[i]['importo'] < lista_fatture[indice_min]['importo']:
+            indice_min = i
+
+    return lista_fatture[indice_min], lista_fatture[indice_max]
 
 
 # lista fatture
