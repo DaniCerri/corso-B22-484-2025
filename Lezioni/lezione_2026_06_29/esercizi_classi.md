@@ -43,7 +43,7 @@ Crea due classi distinte: `Prodotto` e `Carrello`.
 
 2. **Classe `Carrello`**:
    - Il costruttore non accetta parametri esterni, ma inizializza una lista vuota chiamata `prodotti`.
-   - Crea un metodo `aggiungi_prodotto(prodotto)` que accetta un oggetto di tipo `Prodotto` e lo aggiunge alla lista del carrello.
+   - Crea un metodo `aggiungi_prodotto(prodotto)` che accetta un oggetto di tipo `Prodotto` e lo aggiunge alla lista del carrello.
    - Crea un metodo `rimuovi_prodotto(nome_prodotto)` che cerca un prodotto nella lista tramite il nome e lo rimuove (se presente).
    - Crea un metodo `calcola_totale()` che restituisce la somma dei prezzi di tutti i prodotti presenti nel carrello.
    - Crea un metodo `applica_sconto(percentuale)` che riduce il costo totale del carrello della percentuale indicata (es: se si inserisce `10`, il totale finale viene scontato del 10%).
