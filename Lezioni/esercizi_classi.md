@@ -4,7 +4,7 @@ Questo documento contiene tre esercizi pratici per consolidare la comprensione d
 
 ---
 
-## 📚 Esercizio 1: Livello Base – La classe `Libro`
+## Esercizio 1: Livello Base – La classe `Libro`
 
 **Obiettivo:** Imparare a creare una classe, definire il metodo costruttore `__init__` e aggiungere un metodo semplice.
 
@@ -17,7 +17,7 @@ Crea una classe chiamata `Libro`.
 
 ---
 
-## 🏦 Esercizio 2: Livello Intermedio – Il `ContoBancario`
+## Esercizio 2: Livello Intermedio – Il `ContoBancario`
 
 **Obiettivo:** Gestire lo stato di un oggetto tramite metodi, utilizzare l'incapsulamento (attributi privati/protetti) e implementare una logica di controllo.
 
@@ -31,7 +31,7 @@ Crea una classe chiamata `ContoBancario`.
 
 ---
 
-## 🛒 Esercizio 3: Livello Avanzato – Sistema `CarrelloECommerce`
+## Esercizio 3: Livello Avanzato – Sistema `CarrelloECommerce`
 
 **Obiettivo:** Interazione tra più classi (composizione), gestione di liste all'interno di un oggetto e calcoli dinamici.
 
