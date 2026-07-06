@@ -5,11 +5,11 @@ from sqlalchemy import create_engine
 # CONFIGURAZIONE DEI PARAMETRI DI CONNESSIONE
 # =============================================================================
 # Inserisci qui i dati di accesso al tuo database MySQL
-USER = "root"  # "il_tuo_utente"
-PASSWORD = "" #"la_tua_password"
+USER = "dev_user"  # "il_tuo_utente"
+PASSWORD = "password_sicura" #"la_tua_password"
 HOST = "localhost"          # Es. "127.0.0.1" oppure l'IP del server remoto
 PORT = "3306"               # La porta di default di MySQL è 3306
-DATABASE = "nome_del_tuo_db"
+DATABASE = "db_prova_pandas"
 ENGINE = "pymysql"
 LINGUAGGIO = "mysql"
 # Creazione della stringa di connessione (Connection String) per MySQL tramite pymysql
@@ -29,7 +29,15 @@ def leggi_da_db():
     print("\n--- Lettura dati in corso ---")
     
     # Metodo A: Esecuzione di una query SQL personalizzata (Consigliato per filtri e join)
-    query_sql = "SELECT * FROM la_tua_tabella LIMIT 10;"
+    query_sql = """SELECT 
+    c.titolo AS corso,
+    c.durata_ore || ' ore' AS durata_totale,
+    m.numero_ordine AS n_modulo,
+    m.titolo_modulo
+FROM corsi c
+INNER JOIN moduli m ON c.id_corso = m.corso_id
+WHERE c.id_corso = 101 -- Filtra per il corso di Python
+ORDER BY m.numero_ordine ASC;"""
     
     try:
         df_da_query = pd.read_sql_query(query_sql, con=engine)
@@ -79,17 +87,17 @@ if __name__ == "__main__":
     # pip install pandas sqlalchemy pymysql
     
     # 1. Esegui la lettura (decommenta se la tabella esiste già)
-    # df = leggi_da_db()
-    
-    # 2. Esempio di creazione e scrittura di un DataFrame di test
-    df_test = pd.DataFrame({
-        'nome': ['Mario Rossi', 'Luigi Bianchi', 'Anna Verdi'],
-        'email': ['mario@esempio.com', 'luigi@esempio.com', 'anna@esempio.com'],
-        'eta': [34, 28, 42]
-    })
-    
-    print("\nDataFrame di test creato:")
-    print(df_test)
+    df = leggi_da_db()
+    # print(df)
+    # # 2. Esempio di creazione e scrittura di un DataFrame di test
+    # df_test = pd.DataFrame({
+    #     'nome': ['Mario Rossi', 'Luigi Bianchi', 'Anna Verdi'],
+    #     'email': ['mario@esempio.com', 'luigi@esempio.com', 'anna@esempio.com'],
+    #     'eta': [34, 28, 42]
+    # })
+    #
+    # print("\nDataFrame di test creato:")
+    # print(df_test)
     
     # Prova a scrivere il DataFrame di test nel DB
     # scrivi_nel_db(df_test)
