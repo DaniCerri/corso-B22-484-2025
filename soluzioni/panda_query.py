@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Load the dataset
-df = pd.read_csv("tech_orders.csv", index_col='OrderID')
+df = pd.read_csv("../Lezioni/lezione_2026_07_03/tech_orders.csv", index_col='OrderID')
 
 # Ensure date column is in datetime format for temporal queries
 df["Data_Ordine"] = pd.to_datetime(df["Data_Ordine"])
