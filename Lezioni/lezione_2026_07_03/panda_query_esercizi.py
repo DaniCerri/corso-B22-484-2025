@@ -52,15 +52,25 @@ print("Q3\n", q3)
 # Write a query to select all orders placed on a weekend (Saturday or Sunday)
 # where the "Stato_Spedizione" is either "Annullato" or "Rimborsato".
 # (Hint: use .dt.dayofweek or .dt.day_name())
-q4 = None  # TODO
-print("Q4\n", q4)
+weekend = ((df['Data_Ordine'].dt.dayofweek == 5) |
+           (df['Data_Ordine'].dt.dayofweek == 6))
+spedizione_ann_rimb = ((df['Stato_Spedizione'] == "Annullato") |
+                       (df['Stato_Spedizione'] == "Rimborsato"))
+q4 = df[weekend & spedizione_ann_rimb]
+print("Q4\n", q4[['Data_Ordine', 'Stato_Spedizione']])
 
 
 # 5. On-the-fly math filtering
 # Write a query to find orders where the total gross value (Prezzo_Unitario * Quantita)
 # exceeds 2000 euros, but ONLY for customers whose ID starts with "C1" or "C2".
-q5 = None  # TODO
-print("Q5\n", q5)
+spesa_grande = df['Prezzo_Unitario'] * df['Quantita'] > 2000
+id_c1_c2 = (df['Cliente_ID'].str.startswith("C1")) | (df['Cliente_ID'].str.startswith("C2"))
+# id_c1_c2 = df['Cliente_ID'].str.startswith(("C1", "C2"))
+
+q5 = df[spesa_grande & id_c1_c2]
+print(spesa_grande)
+q5['Tot'] = q5['Prezzo_Unitario'] * q5['Quantita']
+print("Q5\n", q5[['Prezzo_Unitario', 'Quantita', 'Tot', 'Cliente_ID']])
 
 
 # 6. Above-average discounts
@@ -105,3 +115,4 @@ print("Q9\n", q9)
 # AND the shipping status is NOT "Consegnato".
 q10 = None  # TODO
 print("Q10\n", q10)
+
