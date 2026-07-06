@@ -15,15 +15,27 @@ df["Data_Ordine"] = pd.to_datetime(df["Data_Ordine"])
 # 1. Discounted Laptops in January
 # Write a query to find all orders in the "Laptop" category placed in January 2026
 # where a discount was actually applied (not NaN and greater than 0).
-q1 = None  # TODO
-print("Q1\n", q1)
+categoria_Laptop = df['Categoria'] == "Laptop"
+gennaio_2026 = ((df['Data_Ordine'].dt.year == 2026)
+                & (df['Data_Ordine'].dt.month == 1))
+sconto_applicato = df.fillna(0.0)['Sconto_Applicato'] > 0
+# sconto_applicato = (df['Sconto_Applicato'].notnull()) & (df['Sconto_Applicato'] > 0)
+
+q1 = df[categoria_Laptop & gennaio_2026 & sconto_applicato]
+print("Q1\n", q1[['Categoria', 'Data_Ordine', 'Sconto_Applicato']])
 
 
 # 2. City pattern matching & Exclusion
 # Write a query to find orders shipped to cities starting with "M" OR ending with "o",
 # EXCLUDING orders paid via "Bonifico".
-q2 = None  # TODO
-print("Q2\n", q2)
+filtro_M = df['Citta_Destinazione'].str.startswith("M")
+filtro_o = df['Citta_Destinazione'].str.endswith("o")
+filtro_lettere = filtro_M | filtro_o
+no_bonifico = df['Metodo_Pagamento'] != 'Bonifico'
+
+q2 = df[filtro_lettere & no_bonifico]
+# q2 = df[(filtro_M | filtro_o) & no_bonifico]
+print("Q2\n", q2[['Citta_Destinazione', 'Metodo_Pagamento']])
 
 
 # 3. Regex / Multiple substring search
