@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS db_prova_pandas;
+CREATE DATABASE db_prova_pandas;
+USE db_prova_pandas;
 -- ==========================================
 -- 1. CREAZIONE DELLE TABELLE (DDL)
 -- ==========================================
