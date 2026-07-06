@@ -5,15 +5,16 @@ from sqlalchemy import create_engine
 # CONFIGURAZIONE DEI PARAMETRI DI CONNESSIONE
 # =============================================================================
 # Inserisci qui i dati di accesso al tuo database MySQL
-USER = "il_tuo_utente"
-PASSWORD = "la_tua_password"
+USER = "root"  # "il_tuo_utente"
+PASSWORD = "" #"la_tua_password"
 HOST = "localhost"          # Es. "127.0.0.1" oppure l'IP del server remoto
 PORT = "3306"               # La porta di default di MySQL è 3306
 DATABASE = "nome_del_tuo_db"
-
+ENGINE = "pymysql"
+LINGUAGGIO = "mysql"
 # Creazione della stringa di connessione (Connection String) per MySQL tramite pymysql
-connection_string = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
-
+connection_string = f"{LINGUAGGIO}+{ENGINE}://{USER}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}"
+print(connection_string)
 try:
     # Creazione del motore SQLAlchemy
     engine = create_engine(connection_string)
