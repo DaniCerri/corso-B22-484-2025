@@ -76,7 +76,16 @@ print("Q5\n", q5[['Prezzo_Unitario', 'Quantita', 'Tot', 'Cliente_ID']])
 # 6. Above-average discounts
 # Write a query to find all orders where the "Sconto_Applicato" is strictly higher
 # than the overall average discount of the entire dataset.
-q6 = None  # TODO
+# Togliamo i NaN dal conteggio della media se vogliamo la media dei valori effettivamente
+# presenti.
+media_sconto = df['Sconto_Applicato'].dropna().mean()
+
+# Settiamo i NaN a 0, se consideriamo i valori assenti come sconti nulli (=0, non null)
+# in questo caso, la media effettiva verrà minore
+# media_sconto = df['Sconto_Applicato'].fillna(0.0).mean()
+media_maggiore = df['Sconto_Applicato'] > media_sconto
+q6 = df[media_maggiore]
+# print(media_sconto)
 print("Q6\n", q6)
 
 
