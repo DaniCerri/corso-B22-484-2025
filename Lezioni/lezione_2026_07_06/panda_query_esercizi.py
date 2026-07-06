@@ -15,15 +15,27 @@ df["Data_Ordine"] = pd.to_datetime(df["Data_Ordine"])
 # 1. Discounted Laptops in January
 # Write a query to find all orders in the "Laptop" category placed in January 2026
 # where a discount was actually applied (not NaN and greater than 0).
-q1 = None  # TODO
-print("Q1\n", q1)
+categoria_Laptop = df['Categoria'] == "Laptop"
+gennaio_2026 = ((df['Data_Ordine'].dt.year == 2026)
+                & (df['Data_Ordine'].dt.month == 1))
+sconto_applicato = df.fillna(0.0)['Sconto_Applicato'] > 0
+# sconto_applicato = (df['Sconto_Applicato'].notnull()) & (df['Sconto_Applicato'] > 0)
+
+q1 = df[categoria_Laptop & gennaio_2026 & sconto_applicato]
+print("Q1\n", q1[['Categoria', 'Data_Ordine', 'Sconto_Applicato']])
 
 
 # 2. City pattern matching & Exclusion
 # Write a query to find orders shipped to cities starting with "M" OR ending with "o",
 # EXCLUDING orders paid via "Bonifico".
-q2 = None  # TODO
-print("Q2\n", q2)
+filtro_M = df['Citta_Destinazione'].str.startswith("M")
+filtro_o = df['Citta_Destinazione'].str.endswith("o")
+filtro_lettere = filtro_M | filtro_o
+no_bonifico = df['Metodo_Pagamento'] != 'Bonifico'
+
+q2 = df[filtro_lettere & no_bonifico]
+# q2 = df[(filtro_M | filtro_o) & no_bonifico]
+print("Q2\n", q2[['Citta_Destinazione', 'Metodo_Pagamento']])
 
 
 # 3. Regex / Multiple substring search
@@ -40,15 +52,25 @@ print("Q3\n", q3)
 # Write a query to select all orders placed on a weekend (Saturday or Sunday)
 # where the "Stato_Spedizione" is either "Annullato" or "Rimborsato".
 # (Hint: use .dt.dayofweek or .dt.day_name())
-q4 = None  # TODO
-print("Q4\n", q4)
+weekend = ((df['Data_Ordine'].dt.dayofweek == 5) |
+           (df['Data_Ordine'].dt.dayofweek == 6))
+spedizione_ann_rimb = ((df['Stato_Spedizione'] == "Annullato") |
+                       (df['Stato_Spedizione'] == "Rimborsato"))
+q4 = df[weekend & spedizione_ann_rimb]
+print("Q4\n", q4[['Data_Ordine', 'Stato_Spedizione']])
 
 
 # 5. On-the-fly math filtering
 # Write a query to find orders where the total gross value (Prezzo_Unitario * Quantita)
 # exceeds 2000 euros, but ONLY for customers whose ID starts with "C1" or "C2".
-q5 = None  # TODO
-print("Q5\n", q5)
+spesa_grande = df['Prezzo_Unitario'] * df['Quantita'] > 2000
+id_c1_c2 = (df['Cliente_ID'].str.startswith("C1")) | (df['Cliente_ID'].str.startswith("C2"))
+# id_c1_c2 = df['Cliente_ID'].str.startswith(("C1", "C2"))
+
+q5 = df[spesa_grande & id_c1_c2]
+print(spesa_grande)
+q5['Tot'] = q5['Prezzo_Unitario'] * q5['Quantita']
+print("Q5\n", q5[['Prezzo_Unitario', 'Quantita', 'Tot', 'Cliente_ID']])
 
 
 # 6. Above-average discounts
@@ -93,3 +115,4 @@ print("Q9\n", q9)
 # AND the shipping status is NOT "Consegnato".
 q10 = None  # TODO
 print("Q10\n", q10)
+
