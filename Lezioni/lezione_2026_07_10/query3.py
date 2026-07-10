@@ -26,17 +26,24 @@ print(df)
 # Trova l'ordine con il totale_ordine piu' alto e stampa la provincia
 # del cliente che l'ha effettuato.
 # =========================================================
-
+filtro1 = df['totale_ordine'] == df['totale_ordine'].max()
+print("DOMANDA 1")
+print(df[filtro1][['totale_ordine', 'provincia']])
 
 # =========================================================
 # Domanda 2
 # Filtra e mostra solo gli ordini dei clienti della regione 'Lazio'.
 # =========================================================
-
+filtro2 = df['regione'] == "Lazio"
+print("DOMANDA 2")
+print(df[filtro2][['regione', 'cliente_id']])
 
 # =========================================================
 # Domanda 3
 # Filtra e mostra solo gli ordini con stato_consegna 'consegnato' e un
 # totale_ordine superiore a 100.
 # =========================================================
-
+filtro3 = df['stato_consegna'] == "consegnato"
+filtro4 = df['totale_ordine'] >= 100
+print("DOMANDA 3")
+print(df[filtro3 & filtro4][['totale_ordine', 'stato_consegna']])
