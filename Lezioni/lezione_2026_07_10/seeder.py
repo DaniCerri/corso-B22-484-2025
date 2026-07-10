@@ -223,6 +223,65 @@ def genera_ordini_dettaglio(n: int, n_ordini: int, n_articoli: int) -> pd.DataFr
 
     return pd.DataFrame(diz_dettaglio)
 
+def inizializza_db():
+    # 1. Crea il motore (utilizzando la funzione crea_engine del file db_connection
+    engine = db.crea_engine(True) # -> Con True stampa gli errori
+
+    # 2. Genera tutte le tabelle e le mette nel DB
+    # versione 1: senza variabile
+    genera_persone(10).to_sql(
+        name='clienti',
+        con=engine,
+        if_exists='append',  # Modifica in 'replace' o 'fail' a seconda delle esigenze
+        index=False          # Imposta False per evitare di salvare l'indice di pandas come colonna SQL
+    )
+    # metodo 2: con variabile
+    uffici = genera_uffici(5)
+    uffici.to_sql(
+        name='uffici',
+        con=engine,
+        if_exists='append',  # Modifica in 'replace' o 'fail' a seconda delle esigenze
+        index=False          # Imposta False per evitare di salvare l'indice di pandas come colonna SQL
+    )
+    impiegati = genera_impiegati(10, 5)
+    impiegati.to_sql(
+        name='impiegati',
+        con=engine,
+        if_exists='append',  # Modifica in 'replace' o 'fail' a seconda delle esigenze
+        index=False          # Imposta False per evitare di salvare l'indice di pandas come colonna SQL
+    )
+    categorie = genera_categorie()
+    categorie.to_sql(
+        name='categorie',
+        con=engine,
+        if_exists='append',  # Modifica in 'replace' o 'fail' a seconda delle esigenze
+        index=False          # Imposta False per evitare di salvare l'indice di pandas come colonna SQL
+    )
+    articoli = genera_articoli(8, 7)
+    articoli.to_sql(
+        name='articoli',
+        con=engine,
+        if_exists='append',  # Modifica in 'replace' o 'fail' a seconda delle esigenze
+        index=False          # Imposta False per evitare di salvare l'indice di pandas come colonna SQL
+    )
+    ordini = genera_ordini(15, 10, 10)
+    ordini.to_sql(
+        name='ordini',
+        con=engine,
+        if_exists='append',  # Modifica in 'replace' o 'fail' a seconda delle esigenze
+        index=False          # Imposta False per evitare di salvare l'indice di pandas come colonna SQL
+    )
+    dettaglio_ordini = genera_ordini_dettaglio(20, 15, 8)
+    dettaglio_ordini.to_sql(
+        name='ordini_dettaglio',
+        con=engine,
+        if_exists='append',  # Modifica in 'replace' o 'fail' a seconda delle esigenze
+        index=False          # Imposta False per evitare di salvare l'indice di pandas come colonna SQL
+    )
+
+    # NB: Siccome ci sono i vincoli attivi nel DB, dovete scrivere le tabelle in ordine
+    # di dipendenze. ES: se la tabella ordini fa riferimento a delle persone, queste devono
+    # esistere prima di poter creare un ordine
 
 if __name__ == "__main__":
     print(genera_persone(10))
