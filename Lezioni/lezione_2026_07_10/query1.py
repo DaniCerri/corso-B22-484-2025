@@ -21,18 +21,20 @@ print(df)
 
 # =========================================================
 # Domanda 1
-# Quante righe di dettaglio ci sono in totale?
+# Filtra solo le righe della categoria 'Elettronica' e stampale.
 # =========================================================
 
 
 # =========================================================
 # Domanda 2
-# Qual e' il prezzo di vendita medio considerando tutte le righe?
+# Aggiungi al DataFrame una colonna 'sconto' calcolata come
+# prezzo_listino - prezzo_vendita.
 # =========================================================
 
 
 # =========================================================
 # Domanda 3
-# Elenca le categorie uniche presenti nel DataFrame.
+# Trova la riga con il prezzo_vendita piu' alto e stampa a quale
+# categoria appartiene.
 # =========================================================
 

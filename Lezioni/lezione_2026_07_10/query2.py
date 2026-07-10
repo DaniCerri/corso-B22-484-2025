@@ -24,18 +24,20 @@ print(df)
 
 # =========================================================
 # Domanda 1
-# Qual e' lo stipendio medio di tutti gli impiegati?
+# Filtra solo le righe degli impiegati con ruolo 'Manager' e stampale.
 # =========================================================
 
 
 # =========================================================
 # Domanda 2
-# Qual e' lo stipendio massimo presente nel DataFrame?
+# Trova l'impiegato con lo stipendio piu' alto e stampa nome, cognome
+# e il nome dell'ufficio in cui lavora.
 # =========================================================
 
 
 # =========================================================
 # Domanda 3
-# Elenca le regioni uniche in cui si trovano gli uffici.
+# Filtra solo le righe degli impiegati che lavorano in un ufficio
+# situato in Lombardia.
 # =========================================================
 

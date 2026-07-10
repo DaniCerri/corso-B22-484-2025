@@ -23,18 +23,20 @@ print(df)
 
 # =========================================================
 # Domanda 1
-# Qual e' il credito medio considerando tutte le righe?
+# Trova l'ordine con il totale_ordine piu' alto e stampa la provincia
+# del cliente che l'ha effettuato.
 # =========================================================
 
 
 # =========================================================
 # Domanda 2
-# Qual e' il totale ordine massimo presente nel DataFrame?
+# Filtra e mostra solo gli ordini dei clienti della regione 'Lazio'.
 # =========================================================
 
 
 # =========================================================
 # Domanda 3
-# Filtra e mostra solo le righe con stato_consegna 'consegnato'.
+# Filtra e mostra solo gli ordini con stato_consegna 'consegnato' e un
+# totale_ordine superiore a 100.
 # =========================================================
 
