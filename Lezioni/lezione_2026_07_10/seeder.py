@@ -284,11 +284,12 @@ def inizializza_db():
     # esistere prima di poter creare un ordine
 
 if __name__ == "__main__":
-    print(genera_persone(10))
-    print(genera_uffici(5))
-    print(genera_impiegati(10, 5))
-    print(genera_categorie())
-    print(genera_articoli(8, 7))
-    print(genera_ordini(15, 10, 10))
-    print(genera_ordini_dettaglio(20, 15, 8))
+    # print(genera_persone(10))
+    # print(genera_uffici(5))
+    # print(genera_impiegati(10, 5))
+    # print(genera_categorie())
+    # print(genera_articoli(8, 7))
+    # print(genera_ordini(15, 10, 10))
+    # print(genera_ordini_dettaglio(20, 15, 8))
+    inizializza_db()
 
